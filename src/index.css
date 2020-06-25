@@ -12,3 +12,30 @@ body {
        url('./fonts/Herculanum.ttf') format('truetype')
 
 }
+
+:root {
+    /* $ VARIABLES */
+    /* > Sizes */
+    --container-border-width: 3px;
+    --container-border-radius: 2rem;
+
+    /* > Colors */
+    /* 1> BnW */
+    --white: #FBFDF9;
+    --white-alt: #F1F8EC;
+    --black: #1C1D19;
+    --black-true: #000;
+    --grey-1: #4D4D4D;
+    --grey-2: #7E7E7E;
+
+    /* 1> Primary */
+    --primary-light-1: #EFF7D3;
+    --primary-light-2: #CEDCC3;
+    --primary: #A7B99E;
+    --primary-dark-1: #535A3B;
+    --primary-dark-2: #3E3728;
+    
+    /* 1> Secondary */
+    --secondary-dark-1: #3B585A;
+    
+}
