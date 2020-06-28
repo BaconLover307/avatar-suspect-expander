@@ -18,6 +18,7 @@ body {
     /* > Sizes */
     --container-border-width: 3px;
     --container-border-radius: 2rem;
+    --elm-border-radius: 1rem;
 
     /* > Colors */
     /* 1> BnW */

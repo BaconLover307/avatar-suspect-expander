@@ -25,7 +25,9 @@
 }
 
 .expander-container {
-    margin: 5rem;
+    margin: 3rem auto;
+    width: 90%;
+    max-width: 960px;
     background-color: #A7B99E;
     border: solid var(--container-border-width) #535A3B;
     border-radius: var(--container-border-radius);
@@ -33,18 +35,38 @@
 }
 
 .graph-container {
+    position: relative;
     width:100%;
     background-color: white;
     /* z-index: 2; */
     border: solid var(--container-border-width) #535A3B;
     border-radius: var(--container-border-radius);
-    position: relative;
     top: calc(-1*var(--container-border-width));
     left: calc(-1*var(--container-border-width));
 }
 
-.search-container {
-    padding: 1rem;
+.graph-container:before {
+    content:"";
+    display: block;
+    padding-top: 56.25%;
+    /* Aspect Ratio: 16:9 */
+}
+
+/* .graph-container::after {
+    content:'';
+    float: left;
+    padding-bottom: 50%;
+} */
+
+@media screen and (max-width: 960px) {
+    .expander-container {
+        margin: 2rem auto;
+    }
+
+    .graph-container:before {
+        padding-top: 100%;
+        /* Aspect Ratio: 1:1 */
+    }
 }
 
 @keyframes App-logo-spin {

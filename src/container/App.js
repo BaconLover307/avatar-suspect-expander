@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import './App.css';
+import '../components/search/searchStyles.css'
+import '../components/graph/graphStyles.css'
 import SearchBar from '../components/search/SearchBar'
+import GraphContainer from '../components/graph/GraphContainer'
+import fireSVG from '../components/graph/fire.svg'
+
 
 class App extends Component {
 
@@ -10,6 +15,7 @@ class App extends Component {
         this.state = {
             posts: {},
             isLoaded: false,
+            selected: {}
         }
     }
 
@@ -17,7 +23,7 @@ class App extends Component {
         axios.get('https://avatar.labpro.dev/friends/30')
             .then(response => {
                     this.setState({
-                        posts: response.data,
+                        selected: response.data,
                         isLoaded: true
                     });
                     console.log(response)})
@@ -31,13 +37,13 @@ class App extends Component {
     }
 
     // > Methods
-    searchById = (id) => {
+    searchByIdHandler = (id) => {
         axios.get('https://avatar.labpro.dev/friends/' + id)
             .then(response => {
                 console.log(response.data.status);
                 if (response.data.status === 200) {
                     this.setState({
-                        posts: response.data,
+                        selected: response.data,
                         isLoaded: true
                     });
                     // this.props.data = response.data;
@@ -51,10 +57,27 @@ class App extends Component {
             });
     }
 
+    getElementHandler = (elm) => {
+        switch (elm) {
+            case 'fire':
+                return fireSVG;
+            // case earth:
+            //     return earthSVG;
+            // case fire:
+            //     return fireSVG;
+            // case fire:
+            //     return fireSVG;
+            default:
+                return fireSVG;
+                // return circle;
+        }
+    }
+
+    // > Render
     render() {
         // let {isLoaded, items} = this.state;
-        const {posts, isLoaded} = this.state;
-        const dummy = posts.payload;
+        const {selected, isLoaded} = this.state;
+        const dummy = selected.payload;
 
         if (!isLoaded) {
             return <div>Loading...</div>;
@@ -68,20 +91,27 @@ class App extends Component {
                     </header>
                     <div className="expander-container">
                         <div className="graph-container">
-                            Graph<br/>will<br/>be<br/>here
+                            <div className="graph-content">
+                                <GraphContainer     />
+                            </div>
                         </div>
                         <div className="search-container">
-                            <SearchBar title="Citizen ID" submit={this.searchById}/>
+                            <div className="search-utils">
+                                <SearchBar title="Citizen ID" submit={this.searchByIdHandler}/>
+                            </div>
+                            <div className="search-res">
+                                <ul>
+                                    <li>Name: {dummy.name}</li>
+                                    <li>Element: {dummy.element}</li>
+                                    {dummy.friends.map((item) => (
+                                        <li className="res-friend" key={item.id}>
+                                            Name: {item.name} | Element: {item.element}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
-                        <ul>
-                            <li>Name: {dummy.name}</li>
-                            <li>Element: {dummy.element}</li>
-                            {dummy.friends.map((item) => (
-                                <li key={item.id}>
-                                    Name: {item.name} | Element: {item.element}
-                                </li>
-                            ))}
-                        </ul>
+                        
                     </div>
                 </div>
             );
