@@ -1,16 +1,9 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-
 /* $ FONTS */
 /* > Herculanum */
 @font-face{
     font-family:  'Herculanum';
     src: local('Herculanum'),
        url('./fonts/Herculanum.ttf') format('truetype')
-
 }
 
 :root {
@@ -38,5 +31,23 @@ body {
     
     /* 1> Secondary */
     --secondary-dark-1: #3B585A;
+
+    /* 1> Elements */
+    --fire:#841B1B;
+    --earth:#365437;
+    --water:#384775;
+    --air:#6795A1;
+    --neutral: #848484;
     
+    background-color: var(--primary-light-1);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+}
+  
+* {
+    margin: 0;
 }

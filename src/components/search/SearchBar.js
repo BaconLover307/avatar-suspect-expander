@@ -27,7 +27,11 @@ class SearchBar extends Component {
             <form  onSubmit={this.submitHandler} className="searchbar">
                 <label className="search-title">{this.props.title}</label>
                 <div>
-                    <input className="input" type="text" id="idInput" name="idInput" value={this.state.out} onChange={this.outputHandler}/>
+                    <input className="input"
+                    type="text" id="idInput"
+                    name="idInput" value={this.state.out}
+                    onChange={this.outputHandler}
+                    placeholder={Math.floor(Math.random()*150)}/>
                     <input type="submit" className="btn-primary" value="Search" />
                 </div>
             </form>

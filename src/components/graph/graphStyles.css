@@ -7,7 +7,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1rem;
+    /* margin: 1rem; */
     border-radius: var(--elm-border-radius);
     overflow: hidden;
+}
+
+.graph {
+    transition: all 300ms;
 }

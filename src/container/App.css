@@ -25,10 +25,10 @@
 }
 
 .expander-container {
-    margin: 3rem auto;
+    margin: 2.5rem auto;
     width: 90%;
     max-width: 960px;
-    background-color: #A7B99E;
+    background-color: var(--primary);
     border: solid var(--container-border-width) #535A3B;
     border-radius: var(--container-border-radius);
     position: relative;
