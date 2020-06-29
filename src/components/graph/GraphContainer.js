@@ -1,55 +1,44 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Graph } from 'react-d3-graph'
 import './graphStyles.css';
 
-class GraphContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.state ={
-            parentData: {}
-        }
-    }
+const GraphContainer = ( props ) => {
+    const myConfig = {
+        nodeHighlightBehavior: true,
+        // automaticRearrangeAfterNodeDrop: true,
+        // collapsible: true,
+        directed: true,
+        node: {
+            color: getComputedStyle(document.body).getPropertyValue('--neutral'),
+            size: 500,
+            highlightStrokeColor: "blue",
+            fontSize: 20,
+            highlightFontSize: 20,
+            highlightFontWeight: "bold",
+        },
+        link: {
+            highlightColor: "lightblue",
+            strokeWidth: 4,
+            
+        },
+        d3: {
+            gravity: -400,
+        },
+        height:1000,
+        width:1000,
+    };
 
-    
+    const expandNode = (nodeId) => props.clickNode(nodeId);
 
-
-    render() {
-      
-          // the graph configuration, you only need to pass down properties
-          // that you want to override, otherwise default ones will be used
-          const myConfig = {
-            nodeHighlightBehavior: true,
-            focusAnimationDuration: 0.5,
-            // automaticRearrangeAfterNodeDrop: true,
-            node: {
-              color: getComputedStyle(document.body).getPropertyValue('--primary'),
-              size: 500,
-              highlightStrokeColor: "blue",
-              fontSize: 20,
-              highlightFontSize: 20,
-              highlightFontWeight: "bold",
-            },
-            link: {
-              highlightColor: "lightblue",
-              strokeWidth: 4,
-              
-            },
-            d3: {
-                gravity: -400,
-            },
-            height:1000,
-            width:1000,
-          };
-        return(
+    return (
         <div>
-            <Graph id="graph-id" className="graph" data={this.props.data} config={myConfig} />
+            <Graph
+            id="graph-id"
+            data={props.data}
+            config={myConfig} 
+            onClickNode={expandNode}/>
         </div>
-        )
-    }
-
-
-
-
+    )
 }
 
 export default GraphContainer;

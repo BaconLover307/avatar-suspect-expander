@@ -18,27 +18,10 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            data: {},
             isLoaded: false,
-            selected: {}
+            selected: {},
+            data: {},
         }
-    }
-
-    componentDidMount() {
-        // axios.get('https://avatar.labpro.dev/friends/30')
-        //     .then(response => {
-        //             this.setState({
-        //                 selected: response.data,
-        //                 isLoaded: true
-        //             });
-        //             console.log(response)})
-            // .then(response => res.json())
-            // .then(json => {
-            //     this.setState({
-            //         isLoaded: true,
-            //         items: json
-            //     })
-            // })
     }
 
     // > Methods
@@ -47,12 +30,15 @@ class App extends Component {
             .then(response => {
                 // console.log(response.data.status);
                 if (response.data.status === 200) {
-                    const raw = response.data.payload;
-                    raw.friends = _.uniqBy(raw.friends, 'id');
-                    _.remove(raw.friends, friend => friend.id === raw.id);
                     this.setState({
-                        selected: raw,
-                        isLoaded: true
+                        data: {},
+                        isLoaded: false
+                    })
+                    const {newData, selectedData} = this.graphDataHandler(response.data.payload);
+                    this.setState({
+                        selected: selectedData,
+                        isLoaded: true,
+                        data: newData
                     });
                 } else {
                     this.setState({
@@ -67,6 +53,24 @@ class App extends Component {
                 });
                 // console.log(error);
             });
+    }
+
+    expandNode = (nodeID) => {
+        axios.get('https://avatar.labpro.dev/friends/' + nodeID)
+            .then(response => {
+                if (response.data.status === 200) {
+                    const {newData, selectedData} = this.graphDataHandler(response.data.payload);
+                    this.setState({
+                        selected: selectedData,
+                        data: newData,
+                    });
+                } else {
+                    this.setState({
+                        isLoaded:null
+                    });
+                    console.log("Data not found");
+                }}
+            )
     }
 
     getElementHandler = (elm) => {
@@ -100,39 +104,45 @@ class App extends Component {
         }
     }
 
-    getGraphDataHandler = () => {
-        const raw = this.state.selected;
+    graphDataHandler = (raw) => {
+        raw.friends = _.uniqBy(raw.friends, 'id');
+        _.remove(raw.friends, friend => friend.id === raw.id);
+        let selected = raw;
         const friends = raw.friends.map(friend => ({
             ...friend,
             color: this.getColorHandler(friend.element),
-            svg: this.getElementHandler(friend.element)
+            // svg: this.getElementHandler(friend.element)
         }));
-        return {
-                nodes: [
-                    // ...prev.nodes,
-                    {
-                    id: raw.id,
+        let newNodes = [
+            {
+                id: raw.id,
                     name: raw.name,
                     element: raw.element,
                     color: this.getColorHandler(raw.element),
-                    svg: this.getElementHandler(raw.element),
-                    },
-                    ...friends
-                    
-                ],
-                links: 
-                    friends.map(item => ({
-                            source: raw.id,
-                            target: item.id,
-                        })
-                    )
-            }
+                    // svg: this.getElementHandler(raw.element),
+            },
+            ...friends
+        ];
+        newNodes = _.unionWith(newNodes, this.state.data.nodes, _.isEqual);
+        
+        let newLinks = friends.map(item => ({
+            source: raw.id,
+            target: item.id,
+        }))
+        newLinks = _.unionWith(newLinks, this.state.data.links, _.isEqual);
+        
+        return {
+            newData: {
+                nodes: newNodes,
+                links: newLinks
+            },
+            selectedData: selected
+        }
     }
 
     // > Render
     render() {
-        // let {isLoaded, items} = this.state;
-        const {selected, isLoaded} = this.state;
+        const {data, selected, isLoaded} = this.state;
 
         let list = null;
         let graph = null;
@@ -158,8 +168,7 @@ class App extends Component {
 
         // 1> Rendering Graph
         if (isLoaded) {
-            let graphData = this.getGraphDataHandler();
-            graph = <GraphContainer data={graphData}/>
+            graph = <GraphContainer data={data} clickNode={this.expandNode}/>
         } else if (isLoaded === null) {
             graph = null;
         }
