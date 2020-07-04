@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import axios from 'axios'
 import './searchStyles.css';
 import {Button, TextField, Box, makeStyles} from '@material-ui/core';
 

@@ -61,7 +61,7 @@ const Citizen = (props) => {
                 <Typography noWrap className={classes.nameStyles} >{props.name}</Typography>
                 <Typography className={classes.elmStyles}>{props.element}</Typography>
                 <Icon className={classes.iconStyles}>
-                    <img  src={props.svg} className={classes.imgStyles}/>
+                    <img src={props.svg} className={classes.imgStyles}/>
                 </Icon>
         </Box>
     )
