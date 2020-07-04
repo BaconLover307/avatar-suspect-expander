@@ -16,8 +16,6 @@ import fireSVG from '../components/modules/assets/fire.svg'
 import airSVG from '../components/modules/assets/air.svg'
 import neutralSVG from '../components/modules/assets/neutral.svg'
 import LogoCCCN from './cccn-long.png'
-import { ThemeProvider, StylesProvider } from '@material-ui/core/styles'
-import theme from './theme.js';
 
 
 class App extends Component {
@@ -198,30 +196,24 @@ class App extends Component {
 
 
         return (
-            <div>
-                <ThemeProvider theme={theme}>
-                    <StylesProvider injectFirst>
-                        <div className="App">
-                            <Header />
-                            <Box className="expander-container">
-                                <Box className="graph-container">
-                                    <Box className="graph-content">
-                                        {graph}
-                                    </Box>
-                                </Box>
-                                <Box className="search-container">
-                                    <Box className="search-utils">
-                                        <SearchBar title="Citizen ID" submit={this.searchByIdHandler}/>
-                                    </Box>
-                                    <Box className="search-res">
-                                        {list}
-                                    </Box>
-                                </Box>
-                            </Box>
-                            <Footer />
-                        </div>
-                    </StylesProvider>
-                </ThemeProvider>
+            <div className="App">
+                <Header />
+                <Box className="expander-container">
+                    <Box className="graph-container">
+                        <Box className="graph-content">
+                            {graph}
+                        </Box>
+                    </Box>
+                    <Box className="search-container">
+                        <Box className="search-utils">
+                            <SearchBar title="Citizen ID" submit={this.searchByIdHandler}/>
+                        </Box>
+                        <Box className="search-res">
+                            {list}
+                        </Box>
+                    </Box>
+                </Box>
+                <Footer />
             </div>
         );
     }
