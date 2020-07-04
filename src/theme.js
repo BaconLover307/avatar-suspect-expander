@@ -6,10 +6,10 @@ const theme = createMuiTheme({
     //     main: '#1C1D19',
     //     dark: '#000000'
     // },
-    // white: {
-    //     main: '#FBFDF9',
+    white: {
+        main: '#FBFDF9',
     //     light: '#F1F8EC'
-    // },
+    },
     // grey: {
     //     main: '#4D4D4D',
     //     light: '#7E7E7E',

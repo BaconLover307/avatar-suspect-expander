@@ -13,7 +13,11 @@ const useStyles = makeStyles(theme => ({
         color: 'white',
         margin: '0.5rem',
         alignItems: 'center',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        transition: '200ms',
+        "&:hover, &:focus": {
+            transform: "scale(105%)"
+        }
     },
     idStyles: {
         alignSelf: 'center',
@@ -61,7 +65,7 @@ const Citizen = (props) => {
                 <Typography noWrap className={classes.nameStyles} >{props.name}</Typography>
                 <Typography className={classes.elmStyles}>{props.element}</Typography>
                 <Icon className={classes.iconStyles}>
-                    <img src={props.svg} className={classes.imgStyles}/>
+                    <img src={props.svg} className={classes.imgStyles} alt={props.element}/>
                 </Icon>
         </Box>
     )

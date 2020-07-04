@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
 }
 
 .App-logo {
@@ -48,7 +52,20 @@
     content:"";
     display: block;
     padding-top: 56.25%;
-    /* Aspect Ratio: 16:9 */
+    /* > Aspect Ratio: 16:9 */
+}
+
+.footer {
+    display: flex;
+    justify-self: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-dark-1);
+    color: var(--white);
+    -webkit-box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px -3px 5px 0px rgba(0,0,0,0.4);
 }
 
 
@@ -59,7 +76,7 @@
 
     .graph-container:before {
         padding-top: 100%;
-        /* Aspect Ratio: 1:1 */
+        /* > Aspect Ratio: 1:1 */
     }
 }
 

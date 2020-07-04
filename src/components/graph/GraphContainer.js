@@ -5,16 +5,16 @@ import './graphStyles.css';
 const GraphContainer = ( props ) => {
     const myConfig = {
         nodeHighlightBehavior: true,
-        // automaticRearrangeAfterNodeDrop: true,
-        // collapsible: true,
+        focusedNodeId: "nodeIdToTriggerZoomAnimation",
         directed: true,
         node: {
             color: getComputedStyle(document.body).getPropertyValue('--neutral'),
-            size: 500,
-            highlightStrokeColor: "blue",
+            size: 800,
             fontSize: 20,
-            highlightFontSize: 20,
-            highlightFontWeight: "bold",
+            highlightFontSize: 22,
+            highlightStrokeColor: "blue",
+            highlightStrokeWidth: 3,
+            // highlightFontWeight: "bold",
         },
         link: {
             highlightColor: "lightblue",
@@ -22,7 +22,7 @@ const GraphContainer = ( props ) => {
             
         },
         d3: {
-            gravity: -400,
+            gravity: -350,
         },
         height:1000,
         width:1000,

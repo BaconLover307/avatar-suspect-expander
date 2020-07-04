@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
 import './searchStyles.css';
-import {Button, TextField, Box, makeStyles} from '@material-ui/core';
-
-const useStyles = makeStyles( () => ({
-    fieldStyles: {
-        background: "white"
-    }
-}));
+import {Button, TextField, Box} from '@material-ui/core';
 
 class SearchBar extends Component {
     constructor(props) {
@@ -41,6 +35,7 @@ class SearchBar extends Component {
                     label={this.props.title}
                     name="idInput" value={this.state.out}
                     onChange={this.outputHandler}
+                    className="search-field"
                     /* placeholder={Math.floor(Math.random()*150)} */ />
                     <Button variant="contained" color="secondary" type="submit" className="btn-primary">Search</Button>
                 </Box>

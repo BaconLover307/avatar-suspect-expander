@@ -1,25 +1,4 @@
 /* $ SearchBar */
-.searchbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.search-title {
-    align-self: flex-start;
-    padding-bottom: 0.2rem;
-    text-align: left;
-    font-family: Poppins;
-    font-size: 16pt;
-}
-
-.input {
-    padding: 2px 5px;
-    border: solid 2px var(--primary-dark-1);
-    border-radius: 1rem;
-    background-color: var(--white);
-}
-
 
 /* $ Search Container */
 
@@ -49,8 +28,9 @@
     overflow-y: auto;
 }
 
-.res-friend {
-    margin-left: 0.5rem;
+.search-field {
+    background-color: var(--primary-light-1);
+    border-radius: 0.25rem 0.25rem 0 0
 }
 
 @media screen and (max-width: 960px) {

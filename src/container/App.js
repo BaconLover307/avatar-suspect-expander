@@ -5,15 +5,16 @@ import '../components/search/searchStyles.css'
 import '../components/graph/graphStyles.css'
 import SearchBar from '../components/search/SearchBar'
 import GraphContainer from '../components/graph/GraphContainer'
-import neutralSVG from '../components/graph/neutral.svg'
 import _ from 'lodash'
 import {Box, Typography} from "@material-ui/core"
 import Header from '../components/modules/Header'
 import Citizen from '../components/modules/Citizen'
-import waterSVG from '../components/modules/water.svg'
-import earthSVG from '../components/modules/earth.svg'
-import fireSVG from '../components/modules/fire.svg'
-import airSVG from '../components/modules/air.svg'
+import Footer from '../components/modules/Footer'
+import waterSVG from '../components/modules/assets/water.svg'
+import earthSVG from '../components/modules/assets/earth.svg'
+import fireSVG from '../components/modules/assets/fire.svg'
+import airSVG from '../components/modules/assets/air.svg'
+import neutralSVG from '../components/graph/neutral.svg'
 
 
 class App extends Component {
@@ -192,7 +193,7 @@ class App extends Component {
 
 
         return (
-            <Box className="App">
+            <div className="App">
                 <Header />
                 <Box className="expander-container">
                     <Box className="graph-container">
@@ -209,7 +210,8 @@ class App extends Component {
                         </Box>
                     </Box>
                 </Box>
-            </Box>
+                <Footer />
+            </div>
         );
     }
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { Toolbar, AppBar, Typography } from "@material-ui/core";
 import { makeStyles } from '@material-ui/styles'
-import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles(theme => ({
     typographyStyles: {
@@ -18,8 +17,7 @@ const Header = () => {
     return (
         <AppBar position="static" color="primary" className={classes.headerStyles}>
             <Toolbar>
-                <Typography className={classes.typographyStyles} > Capital City Citizen Network</Typography>
-                {/* <GitHubIcon href="https://github.com/BaconLover307/avatar-suspect-expander"/> */}
+                <Typography className={classes.typographyStyles}> Capital City Citizen Network</Typography>
             </Toolbar>
         </AppBar>
     )

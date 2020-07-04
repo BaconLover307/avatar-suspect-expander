@@ -19,8 +19,6 @@
     --white-alt: #F1F8EC;
     --black: #1C1D19;
     --black-true: #000;
-    --grey-1: #4D4D4D;
-    --grey-2: #7E7E7E;
 
     /* 1> Primary */
     --primary-light-1: #EFF7D3;
@@ -30,6 +28,7 @@
     --primary-dark-2: #3E3728;
     
     /* 1> Secondary */
+    --secondary: #37777B;
     --secondary-dark-1: #3B585A;
 
     /* 1> Elements */
