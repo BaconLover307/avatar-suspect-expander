@@ -7,14 +7,14 @@
   height: 80px;
 }
 .App-header {
-  background-color: #535A3B;
-  /* height: 3rem; */
-  padding: 1rem;
-  color: white;
+  background-color: var(--primary-dark-1);
+  padding: 1.5rem;
+  color: var(--white);
+  align-items: flex-start;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2rem;
   font-family: Herculanum;
   font-weight: 500;
   margin: auto;
@@ -29,7 +29,7 @@
     width: 90%;
     max-width: 960px;
     background-color: var(--primary);
-    border: solid var(--container-border-width) #535A3B;
+    border: solid var(--container-border-width) var(--primary-dark-1);
     border-radius: var(--container-border-radius);
     position: relative;
 }
@@ -38,8 +38,7 @@
     position: relative;
     width:100%;
     background-color: white;
-    /* z-index: 2; */
-    border: solid var(--container-border-width) #535A3B;
+    border: solid var(--container-border-width) var(--primary-dark-1);
     border-radius: var(--container-border-radius);
     top: calc(-1*var(--container-border-width));
     left: calc(-1*var(--container-border-width));
@@ -52,11 +51,6 @@
     /* Aspect Ratio: 16:9 */
 }
 
-/* .graph-container::after {
-    content:'';
-    float: left;
-    padding-bottom: 50%;
-} */
 
 @media screen and (max-width: 960px) {
     .expander-container {

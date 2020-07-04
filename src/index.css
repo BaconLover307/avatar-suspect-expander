@@ -33,7 +33,7 @@
     --secondary-dark-1: #3B585A;
 
     /* 1> Elements */
-    --fire:#841B1B;
+    --fire:#742B2B;
     --earth:#365437;
     --water:#384775;
     --air:#6795A1;
@@ -50,4 +50,9 @@ body {
   
 * {
     margin: 0;
+}
+
+.MuiButton-contained {
+    margin: 0 1.5rem;
+    padding: 0 2rem;
 }

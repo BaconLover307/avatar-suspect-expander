@@ -31,13 +31,11 @@ const GraphContainer = ( props ) => {
     const expandNode = (nodeId) => props.clickNode(nodeId);
 
     return (
-        <div>
-            <Graph
-            id="graph-id"
-            data={props.data}
-            config={myConfig} 
-            onClickNode={expandNode}/>
-        </div>
+        <Graph
+        id="graph-id"
+        data={props.data}
+        config={myConfig} 
+        onClickNode={expandNode}/>
     )
 }
 

@@ -5,12 +5,15 @@ import '../components/search/searchStyles.css'
 import '../components/graph/graphStyles.css'
 import SearchBar from '../components/search/SearchBar'
 import GraphContainer from '../components/graph/GraphContainer'
-import waterSVG from '../components/graph/water.svg'
-import earthSVG from '../components/graph/earth.svg'
-import fireSVG from '../components/graph/fire.svg'
-import airSVG from '../components/graph/air.svg'
 import neutralSVG from '../components/graph/neutral.svg'
 import _ from 'lodash'
+import {Box, Typography} from "@material-ui/core"
+import Header from '../components/modules/Header'
+import Citizen from '../components/modules/Citizen'
+import waterSVG from '../components/modules/water.svg'
+import earthSVG from '../components/modules/earth.svg'
+import fireSVG from '../components/modules/fire.svg'
+import airSVG from '../components/modules/air.svg'
 
 
 class App extends Component {
@@ -55,7 +58,7 @@ class App extends Component {
             });
     }
 
-    expandNode = (nodeID) => {
+    expandNodeHandler = (nodeID) => {
         axios.get('https://avatar.labpro.dev/friends/' + nodeID)
             .then(response => {
                 if (response.data.status === 200) {
@@ -150,15 +153,29 @@ class App extends Component {
         // 1> Rendering List
         if (isLoaded) {
             list = (
-            <ul>
-                <li>Name: {selected.name}</li>
-                <li>Element: {selected.element}</li>
-                {selected.friends.map((item) => 
-                    <li className="res-friend" key={item.id}>
-                        Name: {item.name} | Element: {item.element}
-                    </li>
-                )}
-            </ul>    
+                <Box>
+                    <Citizen
+                        key={selected.id}
+                        id={selected.id}
+                        name={selected.name}
+                        element={selected.element}
+                        color={this.getColorHandler(selected.element)}
+                        svg={this.getElementHandler(selected.element)}
+                        onClick={() => this.expandNodeHandler(selected.id)}
+                        />
+                    <Typography align="center" variant="h6"> -- Friends -- </Typography>
+                    {selected.friends.map((item) => 
+                        <Citizen
+                            key={item.id}
+                            id={item.id}
+                            name={item.name}
+                            element={item.element}
+                            color={this.getColorHandler(item.element)}
+                            svg={this.getElementHandler(item.element)}
+                            onClick={() => this.expandNodeHandler(item.id)}
+                        />
+                    )}
+                </Box>
             )
         } else if (isLoaded === null) {
             list = (
@@ -168,35 +185,31 @@ class App extends Component {
 
         // 1> Rendering Graph
         if (isLoaded) {
-            graph = <GraphContainer data={data} clickNode={this.expandNode}/>
+            graph = <GraphContainer data={data} clickNode={this.expandNodeHandler}/>
         } else if (isLoaded === null) {
             graph = null;
         }
 
 
         return (
-            <div className="App">
-                <header className="App-header">
-                    {/* <img src={logo} className="App-logo" alt="logo" /> */}
-                    <h1 className="App-title">Capital City Citizen Network</h1>
-                </header>
-                <div className="expander-container">
-                    <div className="graph-container">
-                        <div className="graph-content">
+            <Box className="App">
+                <Header />
+                <Box className="expander-container">
+                    <Box className="graph-container">
+                        <Box className="graph-content">
                             {graph}
-                        </div>
-                    </div>
-                    <div className="search-container">
-                        <div className="search-utils">
+                        </Box>
+                    </Box>
+                    <Box className="search-container">
+                        <Box className="search-utils">
                             <SearchBar title="Citizen ID" submit={this.searchByIdHandler}/>
-                        </div>
-                        <div className="search-res">
+                        </Box>
+                        <Box className="search-res">
                             {list}
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+                        </Box>
+                    </Box>
+                </Box>
+            </Box>
         );
     }
 }
