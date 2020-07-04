@@ -32,7 +32,7 @@ Pada graf, setiap simpul penduduk dapat diklik untuk mengembangkan network dan m
 
 ## Deployment
 
-Program ini telah dideploy ke GitHub Pages di mana bisa diakses pada [link berikut]().
+Program ini telah dideploy ke GitHub Pages di mana bisa diakses pada [link berikut](https://baconlover307.github.io/avatar-suspect-expander/).
 
 ## Library
 
