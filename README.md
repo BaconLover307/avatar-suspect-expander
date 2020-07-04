@@ -1,7 +1,5 @@
 # Capital City Citizen Network / Avatar Suspect Expander
 
-
-
 Capital City Citizen Network adalah sebuah aplikasi web yang mengambil data penduduk dan teman-temannya dari [Capital City Citizen Database](https://avatar.labpro.dev/friends) aka API dari https://avatar.labpro.dev/friends dan menampilkannya dalam sebuah network graph.
 
 Program ini dibuat sebagai bagian dari tugas seleksi asisten LabPro.
