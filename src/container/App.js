@@ -14,7 +14,8 @@ import waterSVG from '../components/modules/assets/water.svg'
 import earthSVG from '../components/modules/assets/earth.svg'
 import fireSVG from '../components/modules/assets/fire.svg'
 import airSVG from '../components/modules/assets/air.svg'
-import neutralSVG from '../components/graph/neutral.svg'
+import neutralSVG from '../components/modules/assets/neutral.svg'
+import LogoCCCN from './cccn-long.png'
 
 
 class App extends Component {
@@ -149,7 +150,7 @@ class App extends Component {
         const {data, selected, isLoaded} = this.state;
 
         let list = null;
-        let graph = null;
+        let graph = <img src={LogoCCCN} alt='' className="logo" />;
 
         // 1> Rendering List
         if (isLoaded) {
@@ -180,15 +181,17 @@ class App extends Component {
             )
         } else if (isLoaded === null) {
             list = (
-                <p>Please enter a valid id</p>
+                <p style={{textAlign: 'center', fontSize: 18, padding: '0.5rem'}}>Please enter a valid id</p>
             )
         }
 
         // 1> Rendering Graph
         if (isLoaded) {
-            graph = <GraphContainer data={data} clickNode={this.expandNodeHandler}/>
+            graph = <Box className="graph-content">
+                        <GraphContainer data={data} clickNode={this.expandNodeHandler}/>
+                    </Box>;
         } else if (isLoaded === null) {
-            graph = null;
+            graph = <img src={LogoCCCN} alt='' className="logo" />;
         }
 
 

@@ -6,28 +6,6 @@
     justify-content: space-between;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-.App-header {
-  background-color: var(--primary-dark-1);
-  padding: 1.5rem;
-  color: var(--white);
-  align-items: flex-start;
-}
-
-.App-title {
-  font-size: 2rem;
-  font-family: Herculanum;
-  font-weight: 500;
-  margin: auto;
-}
-
-.App-intro {
-  font-size: large;
-}
-
 .expander-container {
     margin: 2.5rem auto;
     width: 90%;
@@ -55,6 +33,11 @@
     /* > Aspect Ratio: 16:9 */
 }
 
+.logo {
+    height: 80%;
+    padding: auto;
+}
+
 .footer {
     display: flex;
     justify-self: flex-end;
@@ -78,9 +61,4 @@
         padding-top: 100%;
         /* > Aspect Ratio: 1:1 */
     }
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

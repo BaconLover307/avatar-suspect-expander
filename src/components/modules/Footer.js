@@ -1,11 +1,10 @@
 import React from "react";
-import { Box, Typography, IconButton } from "@material-ui/core";
+import { Typography, IconButton } from "@material-ui/core";
 import { makeStyles } from '@material-ui/styles'
 import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles(theme => ({
     typographyStyles: {
-        // flex: 1,
         textAlign: 'center',
         fontWeight: 400,
         fontSize: '1rem',

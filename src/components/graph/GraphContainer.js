@@ -12,13 +12,14 @@ const GraphContainer = ( props ) => {
             size: 800,
             fontSize: 20,
             highlightFontSize: 22,
-            highlightStrokeColor: "blue",
+            highlightStrokeColor: "#37777B",
             highlightStrokeWidth: 3,
             // highlightFontWeight: "bold",
         },
         link: {
-            highlightColor: "lightblue",
             strokeWidth: 4,
+            color: '#A9CFD1',
+            highlightColor: "#37777B",
             
         },
         d3: {
